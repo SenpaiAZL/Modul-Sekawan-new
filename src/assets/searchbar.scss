@@ -1,0 +1,33 @@
+// Variables for colors and styles
+$bg-color: #2c2f33; // Dark background
+$text-color: #ffffff; // White text color
+$placeholder-color: #aaaaaa; // Placeholder color
+$border-color: #4a4a4a; // Border color
+$focus-border-color: #7289da; // Focus border color
+$border-radius: 5px; // Border radius
+$icon-size: 16px; // Size for the SVG icon
+
+.search-bar {
+  @apply flex justify-center my-4; // Center alignment for search bar
+
+  .search-input {
+    @apply input input-bordered input-primary w-full max-w-lg pl-10 text-white bg-gray-800; // DaisyUI classes
+    border-color: $border-color; // Custom border color
+    border-radius: $border-radius; // Custom border radius
+    &:focus {
+      border-color: $focus-border-color; // Focus border color
+      outline: none; // Remove default outline
+    }
+
+    &::placeholder {
+      color: $placeholder-color; // Placeholder color
+    }
+  }
+
+  .search-icon {
+    @apply absolute left-3 top-1/2 transform -translate-y-1/2 opacity-70; // Icon positioning and styles
+    height: $icon-size; // Set height for SVG
+    width: $icon-size; // Set width for SVG
+    fill: $text-color; // Fill color for the icon
+  }
+}

@@ -1,0 +1,58 @@
+// /* eslint-disable no-unused-vars */
+// import { useState } from "react";
+// import reactLogo from "./assets/react.svg";
+// import viteLogo from "/vite.svg";
+// import "./App.css";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import Home from "./Pages 1/Home";
+// import Forest from "./Pages 1/Forest";
+// import Navbar from "./components/Navbar";
+// import Ruin from "./Pages 1/Ruin";
+// import FlowerField from "./Pages 1/FlowerField";
+// import Aquarium from "./Pages 1/Aquarium";
+// import Detail from "./Pages 1/Detail";
+// import Error404 from "./Pages 1/Error404";
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <div className="">
+//       <BrowserRouter>
+//         <Navbar />
+//         <Routes>
+//           <Route path="Home" element={<Home />} />
+//           <Route path="Forest" element={<Forest />} />
+//           <Route path="Ruin" element={<Ruin />} />
+//           <Route path="FlowerField" element={<FlowerField />} />
+//           <Route path="Aquarium" element={<Aquarium />} />
+//           <Route path="Detail/:id" element={<Detail />} />
+//           <Route path="*" element={<Error404 />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+
+//     // <div className="">
+//     //   <div
+//     //     className="hero min-h-screen"
+//     //     style={{
+//     //       backgroundImage: "url(./src/KoishiForest.jpg)",
+//     //       fontFamily: "'Poppins', sans-serif"
+//     //     }}
+//     //   >
+//     //     <div className="hero-overlay bg-grey-800 bg-opacity-60"></div>
+//     //     <div className="hero-content text-neutral-content text-center">
+//     //       <div className="max-w-md">
+//     //         <h1 className="mb-5 text-5xl font-bold text-green-400">Koishi Komeiji</h1>
+//     //         <p className="mb-5 text-green-300">
+//     //           This forest...is quiet..calming, and very lonely
+//     //         </p>
+//     //         <button className="btn btn-green-500 hover:bg-green-600">Get Started</button>
+//     //       </div>
+//     //     </div>
+//     //   </div>
+//     // </div>
+//   );
+// }
+
+// export default App;
