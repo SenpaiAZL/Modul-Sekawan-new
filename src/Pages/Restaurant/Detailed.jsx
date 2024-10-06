@@ -16,7 +16,7 @@ const Detailed = () => {
           nation and are cherished by locals and visitors alike.
         </p>
 
-        <div className="bg-gray-800 dark:bg-gray-200 p-8 rounded-lg shadow-lg mb-10">
+        <div className="bg-gray-800 dark:bg-white p-8 rounded-lg shadow-lg mb-10">
           <h2 className="text-3xl font-semibold mb-4">
             Examples of Unique Products by Country:
           </h2>
@@ -52,7 +52,7 @@ const Detailed = () => {
           local ingredients, climate, and history of the region.
         </p>
 
-        <div className="bg-gray-800 dark:bg-gray-200 p-8 rounded-lg shadow-lg mb-10">
+        <div className="bg-gray-800 dark:bg-white p-8 rounded-lg shadow-lg mb-10">
           <h2 className="text-3xl font-semibold mb-4">
             Unique Foods from Around the World:
           </h2>

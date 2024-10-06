@@ -3,8 +3,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const root = window.document.documentElement;
+
+  // (Catatan dari Zahran): Pakai array object utk daftar nav links nya daripada manual buat sendiri.
+  // Nanti pakai links.map(() => {return <div></div>})
+  const links = [
+    { label: "Home", to: "/home" },
+    { label: "About", to: "/about" },
+    { label: "Restaurant", to: "/restaurant" },
+    { label: "Product", to: "/product" },
+    { label: "Country", to: "/country" },
+    { label: "Detail", to: "/detailed" },
+  ];
+  // `label` adalah teks nya, `to` adalah tujuan URL nya.
+
   // Apply theme change
   useEffect(() => {
     if (theme == "dark") {
@@ -28,7 +41,11 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className={`shadow-md ${theme == "dark" ? "bg-black" : "bg-white"}`}>
+    <nav
+      className={`dark:border-b-[1px] border-b-0 shadow-md ${
+        theme == "dark" ? "bg-gray-800" : "bg-white"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex">
@@ -42,67 +59,22 @@ const Navbar = () => {
                 Review Website
               </Link>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <Link
-                to="/Home"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  theme === "dark"
-                    ? "text-white hover:text-gray-400"
-                    : "text-black hover:text-gray-600"
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/About"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  theme === "dark"
-                    ? "text-white hover:text-gray-400"
-                    : "text-black hover:text-gray-600"
-                }`}
-              >
-                About
-              </Link>
-              <Link
-                to="/restaurant"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  theme === "dark"
-                    ? "text-white hover:text-gray-400"
-                    : "text-black hover:text-gray-600"
-                }`}
-              >
-                Restaurant
-              </Link>
-              <Link
-                to="/Product"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  theme === "dark"
-                    ? "text-white hover:text-gray-400"
-                    : "text-black hover:text-gray-600"
-                }`}
-              >
-                Product
-              </Link>
-              <Link
-                to="/Country"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  theme === "dark"
-                    ? "text-white hover:text-gray-400"
-                    : "text-black hover:text-gray-600"
-                }`}
-              >
-                Country
-              </Link>
-              <Link
-                to="/Detailed"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  theme === "dark"
-                    ? "text-white hover:text-gray-400"
-                    : "text-black hover:text-gray-600"
-                }`}
-              >
-                Detail
-              </Link>
+            <div className="hidden sm:ml-6 sm:flex sm:space-x-3 tracking-wider text-lg">
+              {links.map((item, index) => {
+                return (
+                  <Link
+                    key={index}
+                    to={item.to}
+                    className={`px-3 py-2 rounded-md text-sm font-medium ${
+                      theme === "dark"
+                        ? "text-white hover:text-gray-400"
+                        : "text-black hover:text-gray-600"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
           </div>
           <div className="flex items-center space-x-4">
@@ -131,6 +103,7 @@ const Navbar = () => {
               <input
                 type="checkbox"
                 onChange={handleTheme}
+                checked={theme == "dark" ? true : false}
                 className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
               />
               <svg

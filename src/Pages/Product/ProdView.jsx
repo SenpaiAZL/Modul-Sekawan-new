@@ -35,10 +35,10 @@ const ProdView = () => {
   }, []);
 
   return (
-    <div className="bg-gray-800 dark:bg-white">
-      <FetcherProd onFetch={handleFetch} query={state.query} />
-      <div>
-        <div className="search-bar">
+    <div className="min-h-screen bg-gray-900 dark:bg-gray-200">
+      <div className="flex flex-col pt-4 pb-12">
+        <FetcherProd onFetch={handleFetch} query={state.query} />
+        <div className="search-bar pb-4">
           <div className="relative">
             <input
               type="text"
@@ -64,33 +64,38 @@ const ProdView = () => {
             </svg>
           </div>
         </div>
-      </div>
-
-      <div className="grid grid-cols-3 gap-4">
-        {state.resto && state.resto.length > 0 ? (
-          state.resto?.map((resto) => (
-            <div key={resto.id}>
-              <div className="product-card">
-                <img
-                  src={resto.image}
-                  alt="Product Image"
-                  className="product-image"
-                />
-                <div className="card-content">
-                  <h2 className="product-title">{resto.title}</h2>
-                  <p className="product-price">{"$" + resto.price}</p>
-                  <Link to={`/ProdDetail/${resto.id}`}>
-                    <button className="add-to-cart-btn">Add to Cart</button>{" "}
-                  </Link>
+        <div className="flex justify-center">
+          <div className="grid grid-cols-3 gap-4 w-[1000px]">
+            {state.resto && state.resto.length > 0 ? (
+              state.resto?.map((resto) => (
+                <div key={resto.id}>
+                  <div className="product-card dark:bg-white dark:border-0 dark:hover:bg-gray-300 p-3">
+                    <img
+                      src={resto.image}
+                      alt="Product Image"
+                      className="product-image rounded-xl"
+                    />
+                    <div className="card-content">
+                      <h2 className="product-title text-[#e5e7eb] dark:text-black">
+                        {resto.title}
+                      </h2>
+                      <p className="product-price">{"$" + resto.price}</p>
+                      <Link to={`/ProdDetail/${resto.id}`}>
+                        <button className="btn add-to-cart-btn">
+                          Add to Cart
+                        </button>{" "}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
+              ))
+            ) : (
+              <div className="col-span-3 text-center">
+                <p>No Products to Display</p>{" "}
               </div>
-            </div>
-          ))
-        ) : (
-          <div className="col-span-3 text-center">
-            <p>No Products to Display</p>{" "}
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Card = ({ id, img, heading, text, city, rate, className }) => {
   return (
     <div
-      className={`card bg-gray-800 dark:bg-gray-500 text-white w-80 h-[450px] shadow-lg rounded-lg border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl ${className}`} // Added transition and transform classes
+      className={`card bg-gray-800 dark:bg-white dark:text-black dark:border-0 text-white w-80 h-[450px] shadow-lg rounded-lg border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl ${className}`} // Added transition and transform classes
     >
       <figure className="p-4">
         <img
@@ -21,14 +21,14 @@ const Card = ({ id, img, heading, text, city, rate, className }) => {
           <div className="badge badge-secondary bg-gray-700 text-white">
             {rate}
           </div>
-          <div className="badge badge-outline border-gray-600 text-gray-300">
+          <div className="badge badge-outline border-gray-600 dark:text-black text-gray-300">
             {city}
           </div>
         </div>
-        <p className="text-gray-300 line-clamp-3">{text}</p>
+        <p className="text-gray-300 line-clamp-3 dark:text-black">{text}</p>
         <div className="card-actions justify-end mt-4">
           <Link to={`/Detail/${id}`}>
-            <button className="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white">
+            <button className="btn bg-blue-600 hover:bg-blue-700 px-6 text-white">
               Detail
             </button>
           </Link>

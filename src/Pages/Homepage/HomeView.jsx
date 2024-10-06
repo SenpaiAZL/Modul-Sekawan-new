@@ -10,7 +10,7 @@ const HomeView = ({
   isSignupVisible,
 }) => {
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-gray-900 dark:bg-gray-200">
       {/* Hero Section */}
       <section
         className="relative bg-cover bg-center"
@@ -23,7 +23,7 @@ const HomeView = ({
         {/* Dark overlay */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div
-            className={`text-center transition-all duration-1000 ${
+            className={`pt-24 items-center text-center transition-all duration-1000 ${
               isHeroVisible ? "fade-in" : ""
             }`}
           >
@@ -44,16 +44,17 @@ const HomeView = ({
             </div>
             <p className="mt-6 text-base sm:text-lg text-gray-300">
               Discover a culinary adventure where delicious meals and
-              exceptional service meet. As well as shopping for multiple unique product while viewing from which country they were!
+              exceptional service meet. As well as shopping for multiple unique
+              product while viewing from which country they were!
             </p>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-12 sm:py-16 bg-gray-700">
+      <section className="py-12 sm:py-16 bg-gray-900 dark:bg-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-2xl sm:text-3xl font-bold text-white mb-8 sm:mb-12">
+          <h2 className="text-center text-2xl sm:text-3xl font-bold text-white dark:text-black mb-8 sm:mb-12">
             Our Key Features
           </h2>
           <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -62,16 +63,16 @@ const HomeView = ({
                 <div
                   key={index}
                   ref={(el) => (featureRefs.current[index] = el)}
-                  className={`p-6 bg-gray-800 rounded-lg shadow-md transform transition-transform duration-500 ease-in-out ${
+                  className={`p-6 bg-gray-800 text-white dark:bg-white dark:text-black rounded-lg shadow-md transform transition-transform duration-500 ease-in-out ${
                     visibleFeatures[index]
                       ? "translate-x-0 opacity-100"
                       : "-translate-x-10 opacity-0"
                   }`}
                 >
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className="text-xl font-semibold">
                     {feature}
                   </h3>
-                  <p className="mt-4 text-gray-300">
+                  <p className="mt-4 text-gray-300 dark:text-gray-600">
                     {`Description of ${feature.toLowerCase()} with a focus on how it helps the user.`}
                   </p>
                 </div>
@@ -108,13 +109,6 @@ const HomeView = ({
       </section>
 
       {/* Footer Section */}
-      <footer className="bg-gray-800 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-400">
-            &copy; 2024 Restaurant Website. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

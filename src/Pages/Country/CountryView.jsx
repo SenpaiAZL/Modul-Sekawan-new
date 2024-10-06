@@ -3,19 +3,21 @@ import CardCountry from "../../components/CardCountry";
 
 const CountryView = ({ data }) => {
   return (
-    <div className="main px-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-      {Array.isArray(data) &&
-        data.map((country) => (
-          <div key={country.id}>
-            <CardCountry
-              img={country.flag}
-              heading={country.name}
-              text={country.currency}
-              id={country.id}
-              txtBtn={"Details"}
-            />
-          </div>
-        ))}
+    <div className="flex justify-center pb-12">
+      <div className="main w-[1000px] px-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+        {Array.isArray(data) &&
+          data.map((country) => (
+            <div key={country.id}>
+              <CardCountry
+                img={country.flag}
+                heading={country.name}
+                text={country.currency}
+                id={country.id}
+                txtBtn={"Details"}
+              />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

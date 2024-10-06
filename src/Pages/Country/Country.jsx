@@ -59,9 +59,9 @@ const CountryList = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="min-h-screen bg-gray-900 dark:bg-gray-200 pt-4">
       {/* Search Bar */}
-      <div className="search-bar flex justify-center my-4 relative">
+      <div className="search-bar flex justify-center my-4 pb-4 relative">
         <div className="relative w-full max-w-lg">
           {/* Search Icon */}
           <svg

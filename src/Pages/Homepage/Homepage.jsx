@@ -50,15 +50,13 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="">
-      <HomeView
-        isHeroVisible={isHeroVisible}
-        featureRefs={featureRefs}
-        visibleFeatures={visibleFeatures}
-        signupRef={signupRef}
-        isSignupVisible={isSignupVisible}
-      />
-    </div>
+    <HomeView
+      isHeroVisible={isHeroVisible}
+      featureRefs={featureRefs}
+      visibleFeatures={visibleFeatures}
+      signupRef={signupRef}
+      isSignupVisible={isSignupVisible}
+    />
   );
 };
 

@@ -18,34 +18,36 @@ import Country from "./Pages/Country/Country";
 import CountryView from "./Pages/Country/CountryView";
 import CountryDetails from "./Pages/Country/CountryDetails";
 import ThemeContext from "./Context/ThemeContext";
+import Footer from "./components/Footer";
 
 function App() {
   const [resto, setResto] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state
-  const themes = useState("light");
+  const themes = useState("dark");
   return (
-    <div className="">
+    <div className="bg-gray-300 dark:bg-gray-800">
       <BrowserRouter>
         <ThemeContext.Provider value={themes}>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="Home" element={<Home />} />
+            <Route path="/home" element={<Home />} />
 
-            <Route path="Detail/:id" element={<Detail />} />
-            <Route path="Detailed" element={<Detailed />} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/detailed" element={<Detailed />} />
 
-            <Route path="Restaurant" element={<Restaurant />} />
-            <Route path="About" element={<About />} />
+            <Route path="/restaurant" element={<Restaurant />} />
+            <Route path="/about" element={<About />} />
 
-            <Route path="Product" element={<ProdView />} />
-            <Route path="ProdDetail/:id" element={<ProdDetail />} />
+            <Route path="/product" element={<ProdView />} />
+            <Route path="/proddetail/:id" element={<ProdDetail />} />
 
-            <Route path="Country" element={<Country />} />
-            <Route path="CountryDetails/:id" element={<CountryDetails />} />
+            <Route path="/country" element={<Country />} />
+            <Route path="/countrydetails/:id" element={<CountryDetails />} />
 
             <Route path="*" element={<Error404 />} />
           </Routes>
+          <Footer />
         </ThemeContext.Provider>
       </BrowserRouter>
     </div>

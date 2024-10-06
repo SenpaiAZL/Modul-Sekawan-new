@@ -25,11 +25,13 @@ const ProdDetail = () => {
         <FetcherProdDetail onFetch={setProd} id={id} />
         {prod ? (
           <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-            <img
-              src={prod.image}
-              alt={prod.title}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
+            <div className="flex justify-center">
+              <img
+                src={prod.image}
+                alt={prod.title}
+                className="w-[350px] h-full object-cover rounded-lg mb-4"
+              />
+            </div>
             <h1 className="text-3xl font-bold mb-2">{prod.title}</h1>
             <p className="mb-4">{prod.description}</p>
 
