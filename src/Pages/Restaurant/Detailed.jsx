@@ -4,7 +4,7 @@ import React from "react";
 
 const Detailed = () => {
   return (
-    <div className="bg-gray-900 text-white py-20">
+    <div className="bg-gray-900 dark:bg-gray-200 text-white py-20 dark:text-black">
       <div className="max-w-6xl mx-auto text-center px-4">
         <h1 className="text-5xl font-bold mb-6">
           Exploring Countries and Their Unique Products
@@ -16,7 +16,7 @@ const Detailed = () => {
           nation and are cherished by locals and visitors alike.
         </p>
 
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg mb-10">
+        <div className="bg-gray-800 dark:bg-gray-200 p-8 rounded-lg shadow-lg mb-10">
           <h2 className="text-3xl font-semibold mb-4">
             Examples of Unique Products by Country:
           </h2>
@@ -52,7 +52,7 @@ const Detailed = () => {
           local ingredients, climate, and history of the region.
         </p>
 
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg mb-10">
+        <div className="bg-gray-800 dark:bg-gray-200 p-8 rounded-lg shadow-lg mb-10">
           <h2 className="text-3xl font-semibold mb-4">
             Unique Foods from Around the World:
           </h2>

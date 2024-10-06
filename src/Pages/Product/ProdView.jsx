@@ -35,7 +35,7 @@ const ProdView = () => {
   }, []);
 
   return (
-    <div className="bg-blue-500 dark:bg-red-500">
+    <div className="bg-gray-800 dark:bg-white">
       <FetcherProd onFetch={handleFetch} query={state.query} />
       <div>
         <div className="search-bar">

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Card = ({ id, img, heading, text, city, rate, className }) => {
   return (
     <div
-      className={`card bg-gray-800 dark:bg-red-600 text-white w-80 h-[450px] shadow-lg rounded-lg border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl ${className}`} // Added transition and transform classes
+      className={`card bg-gray-800 dark:bg-gray-500 text-white w-80 h-[450px] shadow-lg rounded-lg border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl ${className}`} // Added transition and transform classes
     >
       <figure className="p-4">
         <img
