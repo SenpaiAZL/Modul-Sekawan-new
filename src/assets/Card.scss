@@ -55,7 +55,6 @@ $hover-color: rgba(31, 41, 55, 1); // Hover effect that makes the background sli
     .product-title {
       font-size: 1.5rem;
       font-weight: 600;
-      color: $text-color;
       margin-bottom: 8px;
     }
 
@@ -78,7 +77,10 @@ $hover-color: rgba(31, 41, 55, 1); // Hover effect that makes the background sli
     .add-to-cart-btn {
       background-color: $primary-color;
       color: white;
-      padding: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
       text-align: center;
       border: none;
       border-radius: $border-radius;

@@ -11,7 +11,7 @@ $icon-size: 16px; // Size for the SVG icon
   @apply flex justify-center my-4; // Center alignment for search bar
 
   .search-input {
-    @apply input input-bordered input-primary w-full max-w-lg pl-10 text-white bg-gray-800; // DaisyUI classes
+    @apply input w-full max-w-lg pl-10 border-0 text-white dark:text-black bg-gray-800 dark:bg-white; // DaisyUI classes
     border-color: $border-color; // Custom border color
     border-radius: $border-radius; // Custom border radius
     &:focus {
@@ -25,9 +25,8 @@ $icon-size: 16px; // Size for the SVG icon
   }
 
   .search-icon {
-    @apply absolute left-3 top-1/2 transform -translate-y-1/2 opacity-70; // Icon positioning and styles
+    @apply absolute left-3 top-1/2 transform -translate-y-1/2 opacity-70 text-white dark:text-black; // Icon positioning and styles
     height: $icon-size; // Set height for SVG
     width: $icon-size; // Set width for SVG
-    fill: $text-color; // Fill color for the icon
   }
 }

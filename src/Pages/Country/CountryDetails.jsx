@@ -11,7 +11,7 @@ const CountryDetails = () => {
     <div className="min-h-screen bg-gray-900 dark:bg-gray-300 text-white dark:text-black p-5">
       <FetchCountryDetail onFetch={setCountry} id={id} />
       {country ? (
-        <div className="max-w-4xl mx-auto bg-gray-800 dark:bg-gray-300 p-6 rounded-lg shadow-lg">
+        <div className="max-w-4xl mx-auto bg-gray-800 dark:bg-white p-6 rounded-lg shadow-lg">
           <img
             src={country.flag}
             alt={country.name + " flag"}
@@ -45,7 +45,7 @@ const CountryDetails = () => {
 
           {/* Country Stats Section */}
           <div className="mt-10">
-            <h3 className="text-xl dark:text-gray-900">Country Stats:</h3>
+            <h3 className="text-xl dark:text-gray-900 pb-4">Country Stats:</h3>
             <div className="stats stats-vertical shadow">
               <div className="stat">
                 <div className="stat-title dark:text-black">Currency</div>

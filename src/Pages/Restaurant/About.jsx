@@ -19,7 +19,7 @@ const About = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left column - Description */}
-          <div className="bg-gray-800 dark:bg-gray-400 p-8 rounded-lg shadow-lg">
+          <div className="bg-gray-800 dark:bg-white dark:border-[1px] p-8 rounded-lg shadow-lg">
             <h2 className="text-3xl font-semibold text-white dark:text-black mb-4">
               Our Story
             </h2>
@@ -48,7 +48,7 @@ const About = () => {
           </div>
 
           {/* Right column - Values and Philosophy */}
-          <div className="bg-gray-800 dark:bg-gray-400 p-8 rounded-lg shadow-lg">
+          <div className="bg-gray-800 dark:bg-white dark:border-[1px] p-8 rounded-lg shadow-lg">
             <h2 className="text-3xl font-semibold text-white dark:text-black mb-4">
               Our Values
             </h2>

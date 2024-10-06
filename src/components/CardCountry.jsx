@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const CardCountry = ({ id, img, text, heading }) => {
   return (
     <Link to={`/CountryDetails/${id}`}>
-      <div className="bg-gray-700 dark:bg-gray-400 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-10 hover:bg-base-200 duration-300 card border border-slate-700 card-compact p-0 w-full shadow-xl hover:shadow-2xl">
+      <div className="bg-gray-700 dark:bg-white dark:border-0 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-10 hover:bg-base-200 duration-300 card border border-slate-700 card-compact p-0 w-full shadow-xl hover:shadow-2xl">
         <figure>
           <img className="object-cover h-56 w-full" src={img} alt={heading} />
         </figure>
