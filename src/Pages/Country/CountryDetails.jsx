@@ -8,36 +8,36 @@ const CountryDetails = () => {
   const navigate = useNavigate(); // hook to navigate between routes
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-5">
+    <div className="min-h-screen bg-gray-900 dark:bg-gray-300 text-white dark:text-black p-5">
       <FetchCountryDetail onFetch={setCountry} id={id} />
       {country ? (
-        <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div className="max-w-4xl mx-auto bg-gray-800 dark:bg-gray-300 p-6 rounded-lg shadow-lg">
           <img
             src={country.flag}
             alt={country.name + " flag"}
             className="w-full h-96 object-cover rounded-lg mb-4"
           />
-          <h1 className="text-3xl font-bold mb-2">{country.name}</h1>
+          <h1 className="text-3xl dark:text-gray-900">{country.name}</h1>
 
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <h3 className="mt-6 text-xl font-semibold">Currency:</h3>
-              <p className="text-gray-300">{country.currency}</p>
+              <h3 className="mt-6 text-xl dark:text-gray-900">Currency:</h3>
+              <p className="dark:text-gray-900">{country.currency}</p>
             </div>
 
             <div>
-              <h3 className="mt-6 text-xl font-semibold">Capital:</h3>
-              <p className="text-gray-300">{country.capital}</p>
+              <h3 className="mt-6 text-xl dark:text-gray-900">Capital:</h3>
+              <p className="dark:text-gray-900">{country.capital}</p>
             </div>
 
             <div>
-              <h3 className="mt-6 text-xl font-semibold">Region:</h3>
-              <p className="text-gray-300">{country.region}</p>
+              <h3 className="mt-6 text-xl dark:text-gray-900">Region:</h3>
+              <p className="dark:text-gray-900">{country.region}</p>
             </div>
 
             <div>
-              <h3 className="mt-6 text-xl font-semibold">Population:</h3>
-              <p className="text-gray-300">
+              <h3 className="mt-6 text-xl dark:text-gray-900">Population:</h3>
+              <p className="dark:text-gray-900">
                 {country.population.toLocaleString()}
               </p>
             </div>
@@ -45,22 +45,22 @@ const CountryDetails = () => {
 
           {/* Country Stats Section */}
           <div className="mt-10">
-            <h3 className="text-xl font-semibold mb-4">Country Stats:</h3>
+            <h3 className="text-xl dark:text-gray-900">Country Stats:</h3>
             <div className="stats stats-vertical shadow">
               <div className="stat">
-                <div className="stat-title">Currency</div>
+                <div className="stat-title dark:text-black">Currency</div>
                 <div className="stat-value">{country.currency}</div>
               </div>
               <div className="stat">
-                <div className="stat-title">Capital</div>
+                <div className="stat-title dark:text-black">Capital</div>
                 <div className="stat-value">{country.capital}</div>
               </div>
               <div className="stat">
-                <div className="stat-title">Region</div>
+                <div className="stat-title dark:text-black">Region</div>
                 <div className="stat-value">{country.region}</div>
               </div>
               <div className="stat">
-                <div className="stat-title">Population</div>
+                <div className="stat-title dark:text-black">Population</div>
                 <div className="stat-value">
                   {country.population.toLocaleString()}
                 </div>
@@ -69,7 +69,9 @@ const CountryDetails = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center text-gray-400">Loading...</div>
+        <div className="text-center text-gray-400 dark:text-gray-900">
+          Loading...
+        </div>
       )}
 
       {/* Back to Countries Button */}
