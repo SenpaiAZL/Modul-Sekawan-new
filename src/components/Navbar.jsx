@@ -15,19 +15,18 @@ const Navbar = () => {
   }, [theme]);
 
   // Theme toggle handler
-  const toggleTheme = (e) => {
-    const handleTheme = () => {
-      if (theme == "light") {
-        setTheme("dark");
-        root.classList.remove("dark")
-        root.classList.add("light")
-      } else {
-        setTheme("light")
-        root.classList.remove("light")
-        root.classList.add("dark")
-      }
+  // Function kamu didalam function lagi, ya pasti nggak bisa
+  const handleTheme = () => {
+    if (theme == "light") {
+      setTheme("dark");
+      root.classList.remove("dark");
+      root.classList.add("light");
+    } else {
+      setTheme("light");
+      root.classList.remove("light");
+      root.classList.add("dark");
     }
-  }
+  };
   return (
     <nav className={`shadow-md ${theme === "dark" ? "bg-black" : "bg-white"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,7 +130,7 @@ const Navbar = () => {
             <label className="grid cursor-pointer place-items-center">
               <input
                 type="checkbox"
-                onChange={toggleTheme}
+                onChange={handleTheme}
                 className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
               />
               <svg

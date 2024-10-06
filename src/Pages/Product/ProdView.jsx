@@ -35,9 +35,9 @@ const ProdView = () => {
   }, []);
 
   return (
-    <>
+    <div className="bg-blue-500 dark:bg-red-500">
       <FetcherProd onFetch={handleFetch} query={state.query} />
-      <>
+      <div>
         <div className="search-bar">
           <div className="relative">
             <input
@@ -64,7 +64,7 @@ const ProdView = () => {
             </svg>
           </div>
         </div>
-      </>
+      </div>
 
       <div className="grid grid-cols-3 gap-4">
         {state.resto && state.resto.length > 0 ? (
@@ -92,7 +92,7 @@ const ProdView = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
