@@ -21,7 +21,7 @@ const FetchDetail = ({ onFetch, id }) => {
       }
     };
     fetchDataAxios();
-  }, [onFetch, id]);
+  }, []);
 
   return loading ? <div className="spinner"></div> : null;
 };
