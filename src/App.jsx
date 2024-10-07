@@ -1,60 +1,104 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Homepage/Homepage";
-import Navbar from "./components/Navbar";
-import Detail from "./Pages/Restaurant/Detail";
-import Error404 from "./Pages/Restaurant/Error404";
-import Restaurant from "./Pages/Restaurant/Restaurant";
-import About from "./Pages/Restaurant/About";
-import Detailed from "./Pages/Restaurant/Detailed";
-import "./assets/Card.scss";
-import ProdView from "./Pages/Product/ProdView";
-import ProdDetail from "./Pages/Product/ProdDetail";
-import Country from "./Pages/Country/Country";
-import CountryView from "./Pages/Country/CountryView";
-import CountryDetails from "./Pages/Country/CountryDetails";
-import ThemeContext from "./Context/ThemeContext";
-import Footer from "./components/Footer";
-import store from "./store/store";
-import {Provider} from "react-redux"
+// App.js
+
+// import React, { useState, useEffect } from "react";
+// import axios from 'axios'; // Import Axios library
+
+// const App = () => {
+//   // State untuk menyimpan data dari API
+//   const [data, setData] = useState([]);
+
+//   // useEffect akan dipanggil saat komponen dimuat ke dalam DOM
+//   useEffect(() => {
+//     // Fungsi untuk mengambil data dari API
+//     const fetchData = async () => {
+//       try {
+//         // Mengambil data dari API menggunakan Axios
+//         const response = await axios.get('https://restaurant-api.dicoding.dev/list/');
+//         // Mengambil data dari response
+//         const jsonData = response.data;
+//         // Menyimpan data ke dalam state
+//         setData(jsonData);
+//       } catch (error) {
+//       // menanggani error yang terjadi
+//         console.error('Error fetching data:', error);
+//       } 
+//     };
+
+//     // Memanggil fungsi fetchData
+//     fetchData();
+//   }, []); // useEffect hanya akan dipanggil sekali setelah mounting
+
+//   return (
+//     <div>
+//       <h1>Data from API</h1>
+//         <ul>
+//           {/* Menggunakan map untuk merender data ke dalam elemen */}
+//           {data.map((item) => (
+//             <div key={item.id}>
+//               <li>{item.name}</li>
+//               <p>{item.address}</p>
+//             </div>
+//           ))}
+//         </ul>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+//Previous Project
+import { useState } from 'react';
+import './App.css';
+import Button from './components/Button';
+import Card from './components/card';
+import { useEffect } from 'react';
+import CardJpeg from './components/CardJpeg';
+import axios from 'axios';
+
 
 function App() {
-  const [resto, setResto] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
-  const themes = useState("dark");
+  const [data, setData] = useState("Can you see me?");
+  const [resto, setResto] = useState();
+
+  // async function ambilData() {
+  //   const response = await fetch("https://dummyjson.com/product");
+  //   const data = await response.json();
+  //   setResto(data);
+  // }
+
+  const ambilDataAxios = async () => {
+    const response = await axios.get("https://dummyjson.com/product");
+    const data = await response.data;
+    setResto(data);
+  }
+  useEffect(() => {
+    //ambilData()
+    ambilDataAxios();
+  }, [])
+
+
   return (
-    <div className="bg-gray-300 dark:bg-gray-800">
-      <BrowserRouter>
-        <ThemeContext.Provider value={themes}>
-          <Provider store={store}>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
+    <>
+      <ul>{resto?.products?.map((dataResto) => (
+        <>
+          <CardJpeg img={dataResto.thumbnail} heading={dataResto.title} text={dataResto.description} />
 
-              <Route path="/detail/:id" element={<Detail />} />
-              <Route path="/detailed" element={<Detailed />} />
+        </>
+      ))}
+      </ul>
+      {/* <Card img={"KoishiKomeijiDesu.jpg"} heading={"Koishi Komeiji in the forest"} text={"She is wondering the forest"}/>
+	<Card img={"KoishiForest.jpg"} heading={"Koishi Komeiji found A Ruin"} text={"She explored the ruin "}/>
+	<Card img={"KoishiAndSatori.jpg"} heading={"Koishi Komeiji went home"} text={"She told everything she found in the forest to her sister "}/>
+	<Button text={'Next'}/>
 
-              <Route path="/restaurant" element={<Restaurant />} />
-              <Route path="/about" element={<About />} />
-
-              <Route path="/product" element={<ProdView />} />
-              <Route path="/proddetail/:id" element={<ProdDetail />} />
-
-              <Route path="/country" element={<Country />} />
-              <Route path="/countrydetails/:id" element={<CountryDetails />} />
-
-              <Route path="*" element={<Error404 />} />
-            </Routes>
-            <Footer />
-          </Provider>
-        </ThemeContext.Provider>
-      </BrowserRouter>
-    </div>
+  <div className="">
+    <h1>{data}</h1>
+    <button onClick={() =>setData("I am glad")}>Yes</button>
+    <button onClick={() =>setData("Liar")}>No</button>
+    <button onClick={() =>setData("oh...you don't huh")}>...</button>
+  </div> */}
+    </>
   );
 }
 
