@@ -109,17 +109,23 @@ const Navbar = () => {
             </span>
             <div className="relative inline-block text-left">
               <details className="dropdown">
-                <summary className="btn m-1 w-24">
+                <summary className="btn bg-gray-800 text-white border-gray-600 hover:bg-gray-600 dark:bg-gray-100 dark:text-black dark:border-gray-100 dark:hover:bg-gray-300 m-1 w-24">
                   {lang == "en" ? <span>English</span> : <span>Indonesia</span>}
                 </summary>
-                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <ul className="menu dropdown-content text-white dark:bg-white bg-gray-800 dark:text-black rounded-box z-[1] w-52 p-2 shadow">
                   <li>
-                    <button onClick={() => dispatchRedux(setLang("id"))}>
+                    <button
+                      className="hover:bg-gray-800 text-white focus:text-white focus:bg-gray-700 dark:focus:bg-gray-200 dark:focus:text-black dark:hover:bg-gray-200 dark:text-black dark:hover:text-black"
+                      onClick={() => dispatchRedux(setLang("id"))}
+                    >
                       Indonesian
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => dispatchRedux(setLang("en"))}>
+                    <button
+                      className="hover:bg-gray-800 text-white focus:text-white focus:bg-gray-700 dark:focus:bg-gray-200 dark:focus:text-black dark:hover:bg-gray-200 dark:text-black dark:hover:text-black"
+                      onClick={() => dispatchRedux(setLang("en"))}
+                    >
                       English
                     </button>
                   </li>
@@ -128,21 +134,25 @@ const Navbar = () => {
             </div>
             <div className="relative inline-block text-left">
               <details className="dropdown">
-                <summary className="btn m-1 w-24">
+                <summary className="btn bg-gray-800 text-white border-gray-600 hover:bg-gray-600 dark:bg-gray-100 dark:text-black dark:border-gray-100 dark:hover:bg-gray-300 m-1 w-24">
                   {user == "admin" ? (
                     <span>Admin</span>
                   ) : (
                     <span>Superuser</span>
                   )}
                 </summary>
-                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <ul className="menu dropdown-content text-white dark:bg-white bg-gray-800 dark:text-black rounded-box z-[1] w-52 p-2 shadow">
                   <li>
-                    <button onClick={() => dispatchRedux(setUser("admin"))}>
+                    <button
+                      className="hover:bg-gray-800 text-white focus:text-white focus:bg-gray-700 dark:focus:bg-gray-200 dark:focus:text-black dark:hover:bg-gray-200 dark:text-black dark:hover:text-black"
+                      onClick={() => dispatchRedux(setUser("admin"))}
+                    >
                       Admin
                     </button>
                   </li>
                   <li>
                     <button
+                      className="hover:bg-gray-800 text-white focus:text-white focus:bg-gray-700 dark:focus:bg-gray-200 dark:focus:text-black dark:hover:bg-gray-200 dark:text-black dark:hover:text-black"
                       onClick={() => dispatchRedux(setUser("superadmin"))}
                     >
                       Super Admin
