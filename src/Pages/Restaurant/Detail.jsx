@@ -5,8 +5,9 @@ import FetchDetail from "../Fetcher/Fetch Detail";
 const Details = () => {
   const { id } = useParams(); // get the 'id' from the URL
   const navigate = useNavigate(); // Initialize navigate
-  const [resto, setResto] = useState(null); // null initially
-  const [newReview, setNewReview] = useState({ name: "", review: "" });
+  const dispatch = useDispatch();
+
+  const { resto, loading, error } = useSelector((state) => state.resto)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
