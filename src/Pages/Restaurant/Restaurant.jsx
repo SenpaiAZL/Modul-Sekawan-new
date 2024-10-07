@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useReducer, useEffect, useCallback } from "react";
 import axios from "axios";
 import Card from "../../components/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { toogleTheme } from "../../store/action/ThemeAction";
 
 //reducer
 const initialState = {
@@ -28,7 +31,8 @@ const Homepage = () => {
   // Use useReducer to manage resto and query states
   const [state, dispatch] = useReducer(reducer, initialState);
   const { resto, query } = state; // Destructure state
-
+  const theme = useSelector((state) => state.theme.theme);
+  const dispatchRedux = useDispatch();
   // Function to handle search input change
   const handleSearchChange = (e) => {
     dispatch({ type: "SET_QUERY", payload: e.target.value });
@@ -51,7 +55,7 @@ const Homepage = () => {
     fetchRestaurants();
   }, [fetchRestaurants]);
 
-  console.log(state);
+  console.log(theme);
 
   return (
     <div className="flex min-h-screen justify-center bg-gray-900 dark:bg-gray-200">
@@ -92,6 +96,11 @@ const Homepage = () => {
           </span>
         </div>
         <div className="grid grid-cols-3 gap-4">
+          {/* <div className="">
+            <button onClick={() => dispatchRedux(toogleTheme())}>
+              Dispatch Test
+            </button>
+          </div> */}
           {resto?.restaurants && resto.restaurants.length > 0 ? (
             resto.restaurants.map((resto) => (
               <div key={resto.id}>

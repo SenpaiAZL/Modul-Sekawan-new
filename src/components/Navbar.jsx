@@ -1,13 +1,22 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { toogleTheme } from "../store/action/ThemeAction";
+import { setLang } from "../store/action/langAction";
+import { setUser } from "../store/action/userAction";
 const Navbar = () => {
   const [theme, setTheme] = useState("dark");
+  const [language, setLanguage] = useState("English"); // New state for language selection
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for managing dropdown open/close
   const root = window.document.documentElement;
+  const themeSelector = useSelector((state) => state.theme.theme);
+  const dispatchRedux = useDispatch();
+  const lang = useSelector((state) => state.lang);
+  const user = useSelector((state) => state.user);
 
-  // (Catatan dari Zahran): Pakai array object utk daftar nav links nya daripada manual buat sendiri.
-  // Nanti pakai links.map(() => {return <div></div>})
+  console.log(lang, theme, user);
+
   const links = [
     { label: "Home", to: "/home" },
     { label: "About", to: "/about" },
@@ -16,7 +25,6 @@ const Navbar = () => {
     { label: "Country", to: "/country" },
     { label: "Detail", to: "/detailed" },
   ];
-  // `label` adalah teks nya, `to` adalah tujuan URL nya.
 
   // Apply theme change
   useEffect(() => {
@@ -28,7 +36,6 @@ const Navbar = () => {
   }, [theme]);
 
   // Theme toggle handler
-  // Function kamu didalam function lagi, ya pasti nggak bisa
   const handleTheme = () => {
     if (theme == "light") {
       setTheme("dark");
@@ -40,6 +47,13 @@ const Navbar = () => {
       root.classList.add("dark");
     }
   };
+
+  // Language change handler
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    setIsDropdownOpen(false); // Close dropdown after selection
+  };
+
   return (
     <nav
       className={`dark:border-b-[1px] border-b-0 shadow-md ${
@@ -99,6 +113,46 @@ const Navbar = () => {
               </svg>
               Hello, Myomi
             </span>
+            <div className="relative inline-block text-left">
+              <details className="dropdown">
+                <summary className="btn m-1">Language</summary>
+                <ul
+                  className="menu dropdown-content dark:bg-gray-200 bg-gray-800 rounded-box z-[1] w-52 p-2 shadow"
+                  style={{ display: "absolute" }}
+                >
+                  <li>
+                    <button onClick={() => dispatchRedux(setLang("id"))}>
+                      Indonesian
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={() => dispatchRedux(setLang("en"))}>
+                      English
+                    </button>
+                  </li>
+                </ul>
+              </details>
+            </div>
+            <div className="relative inline-block text-left">
+              <details className="dropdown">
+                <summary className="btn m-1">Admin</summary>
+                <ul
+                  className="menu dropdown-content dark:bg-gray-200 bg-gray-800 rounded-box z-[1] w-52 p-2 shadow"
+                  style={{ display: "absolute" }}
+                >
+                  <li>
+                    <button onClick={() => dispatchRedux(setUser("Admin"))}>
+                      admin
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={() => dispatchRedux(setUser("SuperAdmin"))}>
+                      Super Admin
+                    </button>
+                  </li>
+                </ul>
+              </details>
+            </div>
             <label className="grid cursor-pointer place-items-center">
               <input
                 type="checkbox"
@@ -136,23 +190,42 @@ const Navbar = () => {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </label>
-            <div className="-mr-2 flex items-center sm:hidden">
-              <button className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                <svg
-                  className="h-6 w-6"
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
+            <label className="grid cursor-pointer place-items-center">
+              <input
+                type="checkbox"
+                onChange={() => dispatchRedux(toogleTheme())}
+                className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
+              />
+              <svg
+                className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+              </svg>
+              <svg
+                className="stroke-base-100 fill-base-100 col-start-2 row-start-1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </label>
           </div>
         </div>
       </div>

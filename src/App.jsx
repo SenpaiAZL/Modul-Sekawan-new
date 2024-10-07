@@ -19,6 +19,8 @@ import CountryView from "./Pages/Country/CountryView";
 import CountryDetails from "./Pages/Country/CountryDetails";
 import ThemeContext from "./Context/ThemeContext";
 import Footer from "./components/Footer";
+import store from "./store/store";
+import {Provider} from "react-redux"
 
 function App() {
   const [resto, setResto] = useState([]);
@@ -28,26 +30,28 @@ function App() {
     <div className="bg-gray-300 dark:bg-gray-800">
       <BrowserRouter>
         <ThemeContext.Provider value={themes}>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+          <Provider store={store}>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
 
-            <Route path="/detail/:id" element={<Detail />} />
-            <Route path="/detailed" element={<Detailed />} />
+              <Route path="/detail/:id" element={<Detail />} />
+              <Route path="/detailed" element={<Detailed />} />
 
-            <Route path="/restaurant" element={<Restaurant />} />
-            <Route path="/about" element={<About />} />
+              <Route path="/restaurant" element={<Restaurant />} />
+              <Route path="/about" element={<About />} />
 
-            <Route path="/product" element={<ProdView />} />
-            <Route path="/proddetail/:id" element={<ProdDetail />} />
+              <Route path="/product" element={<ProdView />} />
+              <Route path="/proddetail/:id" element={<ProdDetail />} />
 
-            <Route path="/country" element={<Country />} />
-            <Route path="/countrydetails/:id" element={<CountryDetails />} />
+              <Route path="/country" element={<Country />} />
+              <Route path="/countrydetails/:id" element={<CountryDetails />} />
 
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-          <Footer />
+              <Route path="*" element={<Error404 />} />
+            </Routes>
+            <Footer />
+          </Provider>
         </ThemeContext.Provider>
       </BrowserRouter>
     </div>

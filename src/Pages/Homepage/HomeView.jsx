@@ -21,7 +21,7 @@ const HomeView = ({
       >
         <div className="bg-black opacity-50 absolute inset-0"></div>
         {/* Dark overlay */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-2">
           <div
             className={`pt-24 items-center text-center transition-all duration-1000 ${
               isHeroVisible ? "fade-in" : ""

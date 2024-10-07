@@ -21,10 +21,10 @@ const ProdDetail = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-900 text-white p-5">
+      <div className="min-h-screen bg-gray-900 dark:bg-gray-100 text-white dark:text-black p-5">
         <FetcherProdDetail onFetch={setProd} id={id} />
         {prod ? (
-          <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+          <div className="max-w-4xl mx-auto bg-gray-800 dark:bg-gray-100 p-6 rounded-lg shadow-lg">
             <div className="flex justify-center">
               <img
                 src={prod.image}
@@ -32,18 +32,26 @@ const ProdDetail = () => {
                 className="w-[350px] h-full object-cover rounded-lg mb-4"
               />
             </div>
-            <h1 className="text-3xl font-bold mb-2">{prod.title}</h1>
+            <h1 className="text-3xl font-bold mb-2 dark:text-black">
+              {prod.title}
+            </h1>
             <p className="mb-4">{prod.description}</p>
 
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h3 className="mt-6 text-xl font-semibold">Price:</h3>
-                <p className="text-gray-300">{"$" + prod.price}</p>
+                <h3 className="mt-6 text-xl font-semibold dark:text-black">
+                  Price:
+                </h3>
+                <p className="text-gray-300 dark:text-black">
+                  {"$" + prod.price}
+                </p>
               </div>
 
               <div>
-                <h3 className="mt-6 text-xl font-semibold">Rating:</h3>
-                <p className="text-gray-300">
+                <h3 className="mt-6 text-xl font-semibold dark:text-black">
+                  Rating:
+                </h3>
+                <p className="text-gray-300 dark:text-black">
                   {prod.rating.rate +
                     " / 5 (" +
                     prod.rating.count +
@@ -52,13 +60,17 @@ const ProdDetail = () => {
               </div>
 
               <div>
-                <h3 className="mt-6 text-xl font-semibold">Category:</h3>
-                <p className="text-gray-300">{prod.category}</p>
+                <h3 className="mt-6 text-xl font-semibold dark:text-black">
+                  Category:
+                </h3>
+                <p className="text-gray-300 dark:text-black">{prod.category}</p>
               </div>
             </div>
 
             {/* Display Reviews */}
-            <h3 className="mt-6 text-xl font-semibold">Customer Reviews:</h3>
+            <h3 className="mt-6 text-xl font-semibold dark:text-black">
+              Customer Reviews:
+            </h3>
             <ul className="space-y-4">
               {/* Assuming prod has a customerReviews array similar to resto */}
               {prod.customerReviews?.map((review, index) => (
@@ -82,7 +94,10 @@ const ProdDetail = () => {
               <h3 className="text-xl font-semibold mb-4">Leave a Review:</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-gray-400 mb-1" htmlFor="name">
+                  <label
+                    className="block text-gray-400 mb-1 dark:text-black"
+                    htmlFor="name"
+                  >
                     Name
                   </label>
                   <input
@@ -91,12 +106,15 @@ const ProdDetail = () => {
                     name="name"
                     value={newReview.name}
                     onChange={handleInputChange}
-                    className="w-full p-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full p-2 rounded-md bg-gray-700 dark:bg-gray-500 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-400 mb-1" htmlFor="review">
+                  <label
+                    className="block text-gray-400 mb-1 dark:text-black"
+                    htmlFor="review"
+                  >
                     Review
                   </label>
                   <textarea
@@ -105,7 +123,7 @@ const ProdDetail = () => {
                     value={newReview.review}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full p-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full p-2 rounded-md bg-gray-700 dark:bg-gray-500 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     required
                   />
                 </div>
@@ -121,7 +139,7 @@ const ProdDetail = () => {
             {/* Back to Products Button */}
             <button
               onClick={() => navigate(-1)}
-              className="mt-8 bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors"
+              className="mt-8 bg-gray-700 dark:bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors"
             >
               Back to Products
             </button>
