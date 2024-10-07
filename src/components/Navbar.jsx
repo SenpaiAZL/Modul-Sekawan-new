@@ -6,16 +6,16 @@ import { toogleTheme } from "../store/action/ThemeAction";
 import { setLang } from "../store/action/langAction";
 import { setUser } from "../store/action/userAction";
 const Navbar = () => {
-  const [theme, setTheme] = useState("dark");
-  const [language, setLanguage] = useState("English"); // New state for language selection
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for managing dropdown open/close
   const root = window.document.documentElement;
+  const [theme, setTheme] = useState("dark");
   const themeSelector = useSelector((state) => state.theme.theme);
+  const user = useSelector((state) => state.user.user);
+  const lang = useSelector((state) => state.lang.lang);
   const dispatchRedux = useDispatch();
-  const lang = useSelector((state) => state.lang);
-  const user = useSelector((state) => state.user);
 
-  console.log(lang, theme, user);
+  useEffect(() => {
+    handleTheme();
+  }, [themeSelector]);
 
   const links = [
     { label: "Home", to: "/home" },
@@ -37,7 +37,7 @@ const Navbar = () => {
 
   // Theme toggle handler
   const handleTheme = () => {
-    if (theme == "light") {
+    if (themeSelector == "light") {
       setTheme("dark");
       root.classList.remove("dark");
       root.classList.add("light");
@@ -46,12 +46,6 @@ const Navbar = () => {
       root.classList.remove("light");
       root.classList.add("dark");
     }
-  };
-
-  // Language change handler
-  const handleLanguageChange = (lang) => {
-    setLanguage(lang);
-    setIsDropdownOpen(false); // Close dropdown after selection
   };
 
   return (
@@ -115,11 +109,10 @@ const Navbar = () => {
             </span>
             <div className="relative inline-block text-left">
               <details className="dropdown">
-                <summary className="btn m-1">Language</summary>
-                <ul
-                  className="menu dropdown-content dark:bg-gray-200 bg-gray-800 rounded-box z-[1] w-52 p-2 shadow"
-                  style={{ display: "absolute" }}
-                >
+                <summary className="btn m-1 w-24">
+                  {lang == "en" ? <span>English</span> : <span>Indonesia</span>}
+                </summary>
+                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                   <li>
                     <button onClick={() => dispatchRedux(setLang("id"))}>
                       Indonesian
@@ -135,25 +128,30 @@ const Navbar = () => {
             </div>
             <div className="relative inline-block text-left">
               <details className="dropdown">
-                <summary className="btn m-1">Admin</summary>
-                <ul
-                  className="menu dropdown-content dark:bg-gray-200 bg-gray-800 rounded-box z-[1] w-52 p-2 shadow"
-                  style={{ display: "absolute" }}
-                >
+                <summary className="btn m-1 w-24">
+                  {user == "admin" ? (
+                    <span>Admin</span>
+                  ) : (
+                    <span>Superuser</span>
+                  )}
+                </summary>
+                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                   <li>
-                    <button onClick={() => dispatchRedux(setUser("Admin"))}>
-                      admin
+                    <button onClick={() => dispatchRedux(setUser("admin"))}>
+                      Admin
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => dispatchRedux(setUser("SuperAdmin"))}>
+                    <button
+                      onClick={() => dispatchRedux(setUser("superadmin"))}
+                    >
                       Super Admin
                     </button>
                   </li>
                 </ul>
               </details>
             </div>
-            <label className="grid cursor-pointer place-items-center">
+            {/* <label className="grid cursor-pointer place-items-center">
               <input
                 type="checkbox"
                 onChange={handleTheme}
@@ -189,7 +187,7 @@ const Navbar = () => {
               >
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
-            </label>
+            </label> */}
             <label className="grid cursor-pointer place-items-center">
               <input
                 type="checkbox"
